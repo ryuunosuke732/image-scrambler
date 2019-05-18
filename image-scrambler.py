@@ -3,7 +3,7 @@ import urllib.parse
 import urllib.error
 import urllib.response
 import cv2 #pip3 install python-opencv
-import numpy as np #pip3 install numpy
+import numpy #pip3 install numpy
 import os, sys
 import math
 
@@ -26,12 +26,16 @@ if(len(sys.argv)<6):
 		if(finddotbeg != -1):
 			filename = sys.argv[1][findbeg+1:finddotbeg]
 			fileexten = sys.argv[1][finddotbeg+1:]
-			readarr = np.asarray(bytearray(urllib.request.urlopen(sys.argv[1]).read()), dtype=np.uint8)
+			readarr = numpy.asarray(bytearray(urllib.request.urlopen(sys.argv[1]).read()), dtype=numpy.uint8)
+		else:
+			filename = sys.argv[1][findbeg+1:finddotbeg]
+			print("No file extension found. Using png.")
+			fileexten = "png"
 
 	else:
 		filename = sys.argv[1][:sys.argv[1].find(".")]
 		fileexten = sys.argv[1][sys.argv[1].find(".")+1:]
-		readarr = np.asarray(bytearray(open(sys.argv[1],'rb').read()), dtype=np.uint8)
+		readarr = numpy.asarray(bytearray(open(sys.argv[1],'rb').read()), dtype=numpy.uint8)
 	img = cv2.imdecode(readarr,-1)
 	areas = []
 	b= 4*(math.floor(len(img[0]) / 32) *8) - colspace
