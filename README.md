@@ -2,8 +2,8 @@
 Basic transposing of an image.
 
 #Dependecies
-open-cv #pip3 install python-opencv
-numpy #pip3 install numpy
+open-cv (pip3 install python-opencv)
+numpy (pip3 install numpy)
 
 #Usage
 python image-scrambler.py <file> <divide> <row px> <col px>
